@@ -1,0 +1,71 @@
+{
+  "name": "cli-types",
+  "version": "0.0.1",
+  "description": "Type validation and conversion",
+  "author": "muji <noop@xpm.io>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/freeformsystems/cli-types"
+  },
+  "bugs": {
+    "url": "https://github.com/freeformsystems/cli-types/issues",
+    "email": "muji <noop@xpm.io>"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/freeformsystems/cli-types/blob/master/LICENSE"
+    }
+  ],
+  "keywords": [
+    "cli",
+    "middleware"
+  ],
+  "dependencies": {
+    "cli-argparse": "^0.4.2",
+    "cli-conflict": "0.0.1",
+    "cli-define": "^0.5.43",
+    "cli-env": "^1.0.9",
+    "cli-error": "^0.5.7",
+    "cli-fs": "^1.0.3",
+    "cli-help": "0.0.3",
+    "cli-logger": "^0.5.29",
+    "cli-native": "^1.0.0",
+    "cli-util": "^1.1.23",
+    "markzero": "^0.1.29"
+  },
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "istanbul": "^0.3.2",
+    "mocha": "^1.21.4"
+  },
+  "engine": [
+    "node >= 0.10.21"
+  ],
+  "scripts": {
+    "readme": "mdp --force -v",
+    "test": "istanbul cover _mocha -- -u bdd --recursive --bail --reporter list -A test/spec"
+  },
+  "mdp": {
+    "title": "Type Validation",
+    "pedantic": true,
+    "include": "doc/readme",
+    "require": "lib",
+    "links": "links.md",
+    "toc": "Table of Contents",
+    "base": "https://github.com/freeformsystems/cli-types",
+    "partial": [
+      {
+        "inc": [
+          "introduction.md",
+          "install.md"
+        ]
+      },
+      {
+        "inc": [
+          "license.md"
+        ]
+      }
+    ]
+  }
+}
