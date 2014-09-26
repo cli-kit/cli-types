@@ -1,5 +1,5 @@
 ## Install
 
 ```
-npm i cli-middleware
+npm i cli-types
 ```

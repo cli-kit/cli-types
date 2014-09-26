@@ -8,12 +8,12 @@ Table of Contents
 Type Validation
 ===============
 
-Middleware execution for the [command](https://github.com/freeformsystems/cli-command) module, a component of the [toolkit](https://github.com/freeformsystems/cli-toolkit).
+ Type validation and conversion for the [command](https://github.com/freeformsystems/cli-command) module, a component of the [toolkit](https://github.com/freeformsystems/cli-toolkit).
 
 ## Install
 
 ```
-npm i cli-middleware
+npm i cli-types
 ```
 
 ## License
