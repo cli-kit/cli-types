@@ -22,17 +22,11 @@
     "middleware"
   ],
   "dependencies": {
-    "cli-argparse": "^0.4.2",
-    "cli-conflict": "0.0.1",
-    "cli-define": "^0.5.43",
-    "cli-env": "^1.0.9",
+    "cli-conflict": "^0.0.1",
     "cli-error": "^0.5.7",
     "cli-fs": "^1.0.3",
-    "cli-help": "0.0.3",
-    "cli-logger": "^0.5.29",
     "cli-native": "^1.0.0",
-    "cli-util": "^1.1.23",
-    "markzero": "^0.1.29"
+    "cli-util": "^1.1.23"
   },
   "devDependencies": {
     "chai": "^1.9.1",
