@@ -1,6 +1,6 @@
 {
   "name": "cli-types",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Type validation and conversion",
   "author": "muji <noop@xpm.io>",
   "repository": {
