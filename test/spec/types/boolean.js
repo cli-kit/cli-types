@@ -60,4 +60,14 @@ describe('cli-types:', function() {
     expect(res).to.eql(true);
     done();
   });
+
+  it('should coerce to array of booleans', function(done) {
+    var value = ['true', 'False', '1', '0'];
+    var opt = new Option(
+      '-b, --boolean <boolean>', 'a boolean argument');
+    var res = types.boolean(value, opt);
+    expect(res).to.eql([true, false, true, false]);
+    done();
+  });
+
 })
