@@ -25,29 +25,22 @@ describe('cli-types:', function() {
     expect(func).to.throw(ArgumentTypeError);
     done();
   });
-  //it('should coerce multiple values to array of dates', function(done) {
-    //var cli = require('../../..')(pkg);
-    //cli.configure({exit:false});
-    //var args = ['-d', d, '--date=' + d];
-    //cli
-      //.option('-d, --date <date...>', 'a date argument', types.date)
-      //.parse(args);
-    //expect(cli.date).to.eql([dt, dt]);
-    //done();
-  //});
-  //it('should error on invalid date in array', function(done) {
-    //var cli = require('../../..')(pkg);
-    //cli.configure({exit:false});
-    //var args = ['-d', d, '--date=' + d, '--date', d + 'zyx'];
-    //cli
-      //.once('error',function(e) {
-        ////expect(cli).to.eql(this);
-        ////expect(code).to.eql(codes.ETYPE);
-        ////parameters.unshift(message);
-        ////console.error.apply(null, parameters);
-        //done();
-      //})
-      //.option('-d, --date <date...>', 'a date argument', types.date)
-    //cli.parse(args);
-  //});
+  it('should coerce multiple values to array of dates', function(done) {
+    var value = [d, d];
+    var opt = new Option(
+      '-d, --date <d>', 'a date argument');
+    var res = types.date(value, opt);
+    expect(res).to.eql([dt, dt]);
+    done();
+  });
+  it('should error on invalid date in array', function(done) {
+    var value = [d, d, 'xyz'];
+    var opt = new Option(
+      '-d, --date <d>', 'a date argument');
+    function func() {
+      types.date(value, opt);
+    }
+    expect(func).to.throw(ArgumentTypeError);
+    done();
+  });
 })
