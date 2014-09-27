@@ -19,7 +19,9 @@
   ],
   "keywords": [
     "cli",
-    "middleware"
+    "validate",
+    "coerce",
+    "type"
   ],
   "dependencies": {
     "cli-conflict": "^0.0.1",
