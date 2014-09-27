@@ -2,16 +2,9 @@ var expect = require('chai').expect
   , types = require('../..')
   , ArgumentTypeError = types.ArgumentTypeError
   , define = require('cli-define')
-  , Option = define.Option;
-
-var files = {
-  file: __filename,
-  dir: __dirname,
-  noext: 'LICENSE',
-  missing: 'this-file-really-does-not-want-to-be-found.txt'
-}
-
-var scope = require('../util/scope')();
+  , Option = define.Option
+  , files = require('../util/files')
+  , scope = require('../util/scope')();
 
 describe('cli-types:', function() {
 
@@ -108,6 +101,19 @@ describe('cli-types:', function() {
 
   it('should throw argument type error (-f)', function(done) {
     var value = files.missing;
+    var opt = new Option(
+      '-f, --file <file>', 'a file argument', types.file('f'));
+    var converter = opt.converter();
+    function fn() {
+      converter.call(scope, value, opt);
+    }
+    expect(fn).throws(ArgumentTypeError);
+    expect(fn).throws(/not a file/);
+    done();
+  });
+
+  it('should throw argument type error on empty string (-f)', function(done) {
+    var value = '';
     var opt = new Option(
       '-f, --file <file>', 'a file argument', types.file('f'));
     var converter = opt.converter();
