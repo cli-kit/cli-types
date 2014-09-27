@@ -6,7 +6,7 @@ var expect = require('chai').expect
   , define = require('cli-define')
   , Option = define.Option;
 
-describe('cli-command:', function() {
+describe('cli-types:', function() {
   var cwd = process.cwd();
   var home = fs.home();
 
@@ -46,6 +46,19 @@ describe('cli-command:', function() {
       new Option('-p, --path <path>', 'a path argument');
     var res = types.path(file, opt);
     expect(res).to.eql(file);
+    done();
+  });
+
+  it('should resolve multiple values to array of paths', function(done) {
+    var file = 'file.txt';
+    var rel = './' + file;
+    var abs = '/' + file;
+    var user = '~/' + file;
+    var relative = path.join(cwd, file);
+    var opt =
+      new Option('-p, --path <path>', 'a path argument');
+    var res = types.path([file, rel, abs, user], opt);
+    expect(res).to.eql([relative, relative, abs, path.join(home, file)]);
     done();
   });
 })
