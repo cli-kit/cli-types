@@ -68,7 +68,6 @@ describe('cli-types:', function() {
     var opt = new Option(
       '-f, --file <file>', 'a file argument', types.file('f'));
     var converter = opt.converter();
-
     function fn() {
       converter.call(scope, value, opt);
     }
@@ -77,241 +76,172 @@ describe('cli-types:', function() {
     done();
   });
 
-  //it('should throw argument type error (-d)', function(done) {
-    //var cli = require('../..')(pkg, 'mock-file-type');
-    //var value = files.missing;
-    //var args = ['-f', value];
-    //cli
-      //.option('-f, --file <file>', 'a file argument', types.file('d'))
-      //.once('error', function(e) {
-        //expect(e.code).to.eql(this.errors.EFILE_TYPE_D.code);
-        //function fn() {
-          //throw e;
-        //}
-        //expect(fn).throws(Error);
-        //expect(fn).throws(/not a directory/);
-        //done();
-      //})
-    //cli.parse(args);
-  //});
-  //it('should throw argument type error (-e)', function(done) {
-    //var cli = require('../..')(pkg, 'mock-file-type');
-    //var value = files.missing;
-    //var args = ['-f', value];
-    //cli
-      //.option('-f, --file <file>', 'a file argument', types.file('e'))
-      //.once('error', function(e) {
-        //expect(e.code).to.eql(this.errors.EFILE_TYPE_E.code);
-        //function fn() {
-          //throw e;
-        //}
-        //expect(fn).throws(Error);
-        //expect(fn).throws(/does not exist/);
-        //done();
-      //})
-    //cli.parse(args);
-  //});
-  //it('should throw argument type error (-x)', function(done) {
-    //var cli = require('../..')(pkg, 'mock-file-type');
-    //var value = files.missing;
-    //var args = ['-f', value];
-    //cli
-      //.option('-f, --file <file>', 'a file argument', types.file('x'))
-      //.once('error', function(e) {
-        //expect(e.code).to.eql(this.errors.EFILE_TYPE_X.code);
-        //function fn() {
-          //throw e;
-        //}
-        //expect(fn).throws(Error);
-        //expect(fn).throws(/is not executable/);
-        //done();
-      //})
-    //cli.parse(args);
-  //});
-  //it('should throw argument type error (-r)', function(done) {
-    //var cli = require('../..')(pkg, 'mock-file-type');
-    //var value = files.missing;
-    //var args = ['-f', value];
-    //cli
-      //.option('-f, --file <file>', 'a file argument', types.file('r'))
-      //.once('error', function(e) {
-        //expect(e.code).to.eql(this.errors.EFILE_TYPE_R.code);
-        //function fn() {
-          //throw e;
-        //}
-        //expect(fn).throws(Error);
-        //expect(fn).throws(/is not readable/);
-        //done();
-      //})
-    //cli.parse(args);
-  //});
-  //it('should throw argument type error (-w)', function(done) {
-    //var cli = require('../..')(pkg, 'mock-file-type');
-    //var value = files.missing;
-    //var args = ['-f', value];
-    //cli
-      //.option('-f, --file <file>', 'a file argument', types.file('w'))
-      //.once('error', function(e) {
-        //expect(e.code).to.eql(this.errors.EFILE_TYPE_W.code);
-        //function fn() {
-          //throw e;
-        //}
-        //expect(fn).throws(Error);
-        //expect(fn).throws(/is not writable/);
-        //done();
-      //})
-    //cli.parse(args);
-  //});
-  //it('should throw argument type error (-L)', function(done) {
-    //var cli = require('../..')(pkg, 'mock-file-type');
-    //var value = files.missing;
-    //var args = ['-f', value];
-    //cli
-      //.option('-f, --file <file>', 'a file argument', types.file('L'))
-      //.once('error', function(e) {
-        //expect(e.code).to.eql(this.errors.EFILE_TYPE_L.code);
-        //function fn() {
-          //throw e;
-        //}
-        //expect(fn).throws(Error);
-        //expect(fn).throws(/is not a symbolic link/);
-        //done();
-      //})
-    //cli.parse(args);
-  //});
-  //it('should throw argument type error (-S)', function(done) {
-    //var cli = require('../..')(pkg, 'mock-file-type');
-    //var value = files.missing;
-    //var args = ['-f', value];
-    //cli
-      //.option('-f, --file <file>', 'a file argument', types.file('S'))
-      //.once('error', function(e) {
-        //expect(e.code).to.eql(this.errors.EFILE_TYPE_S.code);
-        //function fn() {
-          //throw e;
-        //}
-        //expect(fn).throws(Error);
-        //expect(fn).throws(/is not a socket/);
-        //done();
-      //})
-    //cli.parse(args);
-  //});
-  //it('should throw argument type error (-t)', function(done) {
-    //var cli = require('../..')(pkg, 'mock-file-type');
-    //var value = files.missing;
-    //var args = ['-f', value];
-    //cli
-      //.option('-f, --file <file>', 'a file argument', types.file('t'))
-      //.once('error', function(e) {
-        //expect(e.code).to.eql(this.errors.EFILE_TYPE_T.code);
-        //function fn() {
-          //throw e;
-        //}
-        //expect(fn).throws(Error);
-        //expect(fn).throws(/is not a tty/);
-        //done();
-      //})
-    //cli.parse(args);
-  //});
-  //it('should throw argument type error (-b)', function(done) {
-    //var cli = require('../..')(pkg, 'mock-file-type');
-    //var value = files.missing;
-    //var args = ['-f', value];
-    //cli
-      //.option('-f, --file <file>', 'a file argument', types.file('b'))
-      //.once('error', function(e) {
-        //expect(e.code).to.eql(this.errors.EFILE_TYPE_B.code);
-        //function fn() {
-          //throw e;
-        //}
-        //expect(fn).throws(Error);
-        //expect(fn).throws(/is not a block special file/);
-        //done();
-      //})
-    //cli.parse(args);
-  //});
-  //it('should throw argument type error (-c)', function(done) {
-    //var cli = require('../..')(pkg, 'mock-file-type');
-    //var value = files.missing;
-    //var args = ['-f', value];
-    //cli
-      //.option('-f, --file <file>', 'a file argument', types.file('c'))
-      //.once('error', function(e) {
-        //expect(e.code).to.eql(this.errors.EFILE_TYPE_C.code);
-        //function fn() {
-          //throw e;
-        //}
-        //expect(fn).throws(Error);
-        //expect(fn).throws(/is not a character special file/);
-        //done();
-      //})
-    //cli.parse(args);
-  //});
-  //it('should throw argument type error (-p)', function(done) {
-    //var cli = require('../..')(pkg, 'mock-file-type');
-    //var value = files.missing;
-    //var args = ['-f', value];
-    //cli
-      //.option('-f, --file <file>', 'a file argument', types.file('p'))
-      //.once('error', function(e) {
-        //expect(e.code).to.eql(this.errors.EFILE_TYPE_P.code);
-        //function fn() {
-          //throw e;
-        //}
-        //expect(fn).throws(Error);
-        //expect(fn).throws(/is not a named pipe/);
-        //done();
-      //})
-    //cli.parse(args);
-  //});
-  //it('should throw argument type error (-n)', function(done) {
-    //var cli = require('../..')(pkg, 'mock-file-type');
-    //var args = ['-f='];
-    //cli
-      //.option('-f, --file [file]', 'a file argument', types.file('n'))
-      //.once('error', function(e) {
-        //expect(e.code).to.eql(this.errors.EFILE_TYPE_N.code);
-        //function fn() {
-          //throw e;
-        //}
-        //expect(fn).throws(Error);
-        //expect(fn).throws(/is the empty string/);
-        //done();
-      //})
-    //cli.parse(args);
-  //});
-  //it('should throw argument type error (-z)', function(done) {
-    //var cli = require('../..')(pkg, 'mock-file-type');
-    //var value = files.missing;
-    //var args = ['-f', value];
-    //cli
-      //.option('-f, --file <file>', 'a file argument', types.file('z'))
-      //.once('error', function(e) {
-        //expect(e.code).to.eql(this.errors.EFILE_TYPE_Z.code);
-        //function fn() {
-          //throw e;
-        //}
-        //expect(fn).throws(Error);
-        //expect(fn).throws(/is not the empty string/);
-        //done();
-      //})
-    //cli.parse(args);
-  //});
-  //it('should throw argument type error (-s)', function(done) {
-    //var cli = require('../..')(pkg, 'mock-file-type');
-    //var value = '/dev/null';
-    //var args = ['-f', value];
-    //cli
-      //.option('-f, --file <file>', 'a file argument', types.file('s'))
-      //.once('error', function(e) {
-        //expect(e.code).to.eql(this.errors.EFILE_TYPE_SIZE.code);
-        //function fn() {
-          //throw e;
-        //}
-        //expect(fn).throws(Error);
-        //expect(fn).throws(/is an empty file/);
-        //done();
-      //})
-    //cli.parse(args);
-  //});
+  it('should throw argument type error (-d)', function(done) {
+    var value = files.missing;
+    var opt = new Option(
+      '-f, --file <file>', 'a file argument', types.file('d'));
+    var converter = opt.converter();
+    function fn() {
+      converter.call(scope, value, opt);
+    }
+    expect(fn).throws(ArgumentTypeError);
+    expect(fn).throws(/not a directory/);
+    done();
+  });
+
+  it('should throw argument type error (-e)', function(done) {
+    var value = files.missing;
+    var opt = new Option(
+      '-f, --file <file>', 'a file argument', types.file('e'));
+    var converter = opt.converter();
+    function fn() {
+      converter.call(scope, value, opt);
+    }
+    expect(fn).throws(ArgumentTypeError);
+    expect(fn).throws(/does not exist/);
+    done();
+  });
+
+  it('should throw argument type error (-x)', function(done) {
+    var value = files.missing;
+    var opt = new Option(
+      '-f, --file <file>', 'a file argument', types.file('x'));
+    var converter = opt.converter();
+    function fn() {
+      converter.call(scope, value, opt);
+    }
+    expect(fn).throws(ArgumentTypeError);
+    expect(fn).throws(/is not executable/);
+    done();
+  });
+
+  it('should throw argument type error (-r)', function(done) {
+    var value = files.missing;
+    var opt = new Option(
+      '-f, --file <file>', 'a file argument', types.file('r'));
+    var converter = opt.converter();
+    function fn() {
+      converter.call(scope, value, opt);
+    }
+    expect(fn).throws(ArgumentTypeError);
+    expect(fn).throws(/is not readable/);
+    done();
+  });
+
+  it('should throw argument type error (-w)', function(done) {
+    var value = files.missing;
+    var opt = new Option(
+      '-f, --file <file>', 'a file argument', types.file('w'));
+    var converter = opt.converter();
+    function fn() {
+      converter.call(scope, value, opt);
+    }
+    expect(fn).throws(ArgumentTypeError);
+    expect(fn).throws(/is not writable/);
+    done();
+  });
+
+  it('should throw argument type error (-L)', function(done) {
+    var value = files.missing;
+    var opt = new Option(
+      '-f, --file <file>', 'a file argument', types.file('L'));
+    var converter = opt.converter();
+    function fn() {
+      converter.call(scope, value, opt);
+    }
+    expect(fn).throws(ArgumentTypeError);
+    expect(fn).throws(/is not a symbolic link/);
+    done();
+  });
+
+  it('should throw argument type error (-S)', function(done) {
+    var value = files.missing;
+    var opt = new Option(
+      '-f, --file <file>', 'a file argument', types.file('S'));
+    var converter = opt.converter();
+    function fn() {
+      converter.call(scope, value, opt);
+    }
+    expect(fn).throws(ArgumentTypeError);
+    expect(fn).throws(/is not a socket/);
+    done();
+  });
+
+  it('should throw argument type error (-t)', function(done) {
+    var value = files.missing;
+    var opt = new Option(
+      '-f, --file <file>', 'a file argument', types.file('t'));
+    var converter = opt.converter();
+    function fn() {
+      converter.call(scope, value, opt);
+    }
+    expect(fn).throws(ArgumentTypeError);
+    expect(fn).throws(/is not a tty/);
+    done();
+  });
+
+  it('should throw argument type error (-b)', function(done) {
+    var value = files.missing;
+    var opt = new Option(
+      '-f, --file <file>', 'a file argument', types.file('b'));
+    var converter = opt.converter();
+    function fn() {
+      converter.call(scope, value, opt);
+    }
+    expect(fn).throws(ArgumentTypeError);
+    expect(fn).throws(/is not a block special file/);
+    done();
+  });
+
+  it('should throw argument type error (-c)', function(done) {
+    var value = files.missing;
+    var opt = new Option(
+      '-f, --file <file>', 'a file argument', types.file('c'));
+    var converter = opt.converter();
+    function fn() {
+      converter.call(scope, value, opt);
+    }
+    expect(fn).throws(ArgumentTypeError);
+    expect(fn).throws(/is not a character special file/);
+    done();
+  });
+
+  it('should throw argument type error (-p)', function(done) {
+    var value = files.missing;
+    var opt = new Option(
+      '-f, --file <file>', 'a file argument', types.file('p'));
+    var converter = opt.converter();
+    function fn() {
+      converter.call(scope, value, opt);
+    }
+    expect(fn).throws(ArgumentTypeError);
+    expect(fn).throws(/is not a named pipe/);
+    done();
+  });
+
+  it('should throw argument type error (-z)', function(done) {
+    var value = files.missing;
+    var opt = new Option(
+      '-f, --file <file>', 'a file argument', types.file('z'));
+    var converter = opt.converter();
+    function fn() {
+      converter.call(scope, value, opt);
+    }
+    expect(fn).throws(ArgumentTypeError);
+    expect(fn).throws(/is not the empty string/);
+    done();
+  });
+
+  it('should throw argument type error (-s)', function(done) {
+    var value = '/dev/null';
+    var opt = new Option(
+      '-f, --file <file>', 'a file argument', types.file('s'));
+    var converter = opt.converter();
+    function fn() {
+      converter.call(scope, value, opt);
+    }
+    expect(fn).throws(ArgumentTypeError);
+    expect(fn).throws(/is an empty file/);
+    done();
+  });
 })
