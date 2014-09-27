@@ -7,6 +7,7 @@ var expect = require('chai').expect
 var files = {
   file: __filename,
   dir: __dirname,
+  noext: 'LICENSE',
   missing: 'this-file-really-does-not-want-to-be-found.txt'
 }
 
@@ -62,6 +63,48 @@ describe('cli-types:', function() {
     expect(res).to.eql(value);
     done();
   });
+
+  it('should accept valid file extension', function(done) {
+    var value = files.file;
+    var opt = new Option(
+      '-f, --file <file>', 'a file argument', types.file('f', false, ['js']));
+    var converter = opt.converter();
+    var res = converter(value, opt);
+    expect(res).to.eql(value);
+    done();
+  });
+
+  it('should throw argument type error on invalid file extension',
+    function(done) {
+      var value = files.file;
+      var opt = new Option(
+        '-f, --file <file>', 'a file argument',
+        types.file('f', false, ['json']));
+      var converter = opt.converter();
+      function fn() {
+        converter.call(scope, value, opt);
+      }
+      expect(fn).throws(ArgumentTypeError);
+      expect(fn).throws(/invalid file extension/);
+      done();
+    }
+  );
+
+  it('should throw argument type error on no file extension',
+    function(done) {
+      var value = files.noext;
+      var opt = new Option(
+        '-f, --file <file>', 'a file argument',
+        types.file('f', true, ['json']));
+      var converter = opt.converter();
+      function fn() {
+        converter.call(scope, value, opt);
+      }
+      expect(fn).throws(ArgumentTypeError);
+      expect(fn).throws(/should have an extension/);
+      done();
+    }
+  );
 
   it('should throw argument type error (-f)', function(done) {
     var value = files.missing;
