@@ -1,14 +1,16 @@
 var err = require('cli-error');
 var errors = require('../../lib/errors');
-var _configure = {stash: {}};
 
 var Scope = function() {
   err.load(errors);
   this.errors = err.errors;
+  this._configure = {stash: {}};
 }
 
 Scope.prototype.configure = function() {
-  return _configure;
+  return this._configure;
 }
 
-module.exports = new Scope();
+module.exports = function getScope() {
+  return new Scope();
+};

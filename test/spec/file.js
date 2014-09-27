@@ -11,7 +11,7 @@ var files = {
   missing: 'this-file-really-does-not-want-to-be-found.txt'
 }
 
-var scope = require('../util/scope');
+var scope = require('../util/scope')();
 
 describe('cli-types:', function() {
 
