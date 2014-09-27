@@ -109,6 +109,34 @@ describe('cli-types:', function() {
     }
   );
 
+  it('should append to existing array',
+    function(done) {
+      var scope = require('../util/scope')();
+      var expected = {
+        host: ['nodejs.org']
+      }
+
+      var append = ['npmjs.org'];
+
+      var host =
+        new Option('-h, --host <host...>',
+          'server hostname', types.object('server'));
+
+      var res = host.converter().call(scope, expected.host, host);
+      expect(res).to.be.an('object');
+      expect(res.host).to.eql(expected.host);
+
+      res = host.converter().call(scope, append, host);
+      expect(res).to.be.an('object');
+      expect(res.host).to.eql(expected.host.concat(append));
+
+      expected.host = expected.host.concat(append);
+      expect(res).to.eql(scope.configure().stash.server)
+        .to.eql(expected);
+      done();
+    }
+  );
+
   it('should return false on conflicting property name',
     function(done) {
       var scope = require('../util/scope')();
