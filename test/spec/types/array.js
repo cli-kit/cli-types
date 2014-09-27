@@ -1,7 +1,6 @@
-var expect = require('chai').expect;
-var types = require('../../..');
-
-var define = require('cli-define')
+var expect = require('chai').expect
+  , types = require('../../..')
+  , define = require('cli-define')
   , Option = define.Option;
 
 describe('cli-types:', function() {
