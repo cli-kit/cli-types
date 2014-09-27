@@ -3,6 +3,7 @@ Table of Contents
 
 * [Types](#types)
   * [Install](#install)
+  * [Test](#test)
   * [License](#license)
 
 Types
@@ -14,6 +15,12 @@ Types
 
 ```
 npm i cli-types
+```
+
+## Test
+
+```
+npm test
 ```
 
 ## License
