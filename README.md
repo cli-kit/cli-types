@@ -1,12 +1,12 @@
 Table of Contents
 =================
 
-* [Type Validation](#type-validation)
+* [Types](#types)
   * [Install](#install)
   * [License](#license)
 
-Type Validation
-===============
+Types
+=====
 
  Type validation and conversion for the [command](https://github.com/freeformsystems/cli-command) module, a component of the [toolkit](https://github.com/freeformsystems/cli-toolkit).
 

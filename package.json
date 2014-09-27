@@ -43,7 +43,7 @@
     "test": "istanbul cover _mocha -- -u bdd --recursive --bail --reporter list -A test/spec"
   },
   "mdp": {
-    "title": "Type Validation",
+    "title": "Types",
     "pedantic": true,
     "include": "doc/readme",
     "require": "lib",
