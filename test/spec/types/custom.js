@@ -8,7 +8,6 @@ describe('cli-types:', function() {
     var custom = function(value, arg, index) {
       throw new Error('Invalid value');
     }
-
     var value = 'value';
     var opt = new Option(
       '-a', 'an array argument', custom);
