@@ -127,28 +127,28 @@ describe('cli-types:', function() {
     done();
   });
 
-  //it('should be allowed by enum list (repeatable)', function(done) {
-    //var cli = require('../../..')(pkg);
-    //var list = ['css', 'scss', 'less'];
-    //var args = ['-e', 'css', '--enum=scss'];
-    //cli
-      //.option('-e, --enum <value...>',
-        //'an enum argument', types.enum(list))
-    //cli.parse(args);
-    //expect(cli.enum).to.eql(['css', 'scss']);
-    //done();
-  //});
-  //it('should allow primitives in enum list (repeatable)', function(done) {
-    //var cli = require('../../..')(pkg);
-    //var list = [null, false, true, 1, -1, undefined, 'string'];
-    //var args = [
-      //'-e=null', '-e=false', '-e=true', '-e=1', '-e=-1', '-e', '-1',
-      //'-e=undefined', '-e=string'];
-    //cli
-      //.option('-e, --enum <value...>',
-        //'an enum argument', types.enum(list, true))
-    //cli.parse(args);
-    //expect(cli.enum).to.eql([null, false, true, 1, -1, -1, undefined, 'string']);
-    //done();
-  //});
+  it('should be allowed by enum list (repeatable)', function(done) {
+    var list = ['css', 'scss', 'less'];
+    var value = ['css', 'scss'];
+    var opt =
+      new Option('-e, --enum <value>',
+        'an enum argument', types.enum(list));
+    var converter = opt.converter();
+    var res = converter(value, opt);
+    expect(res).to.eql(value);
+    done();
+  });
+
+  it('should allow primitives in enum list (repeatable)', function(done) {
+    var list = [null, false, true, 1, -1, undefined, 'string'];
+    var value = ['null', 'false', 'true', '1', '-1', undefined, 'string'];
+    var expected = [null, false, true, 1, -1, undefined, 'string'];
+    var opt =
+      new Option('-e, --enum <value>',
+        'an enum argument', types.enum(list, true));
+    var converter = opt.converter();
+    var res = converter(value, opt);
+    expect(res).to.eql(expected);
+    done();
+  });
 })
