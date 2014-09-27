@@ -1,5 +1,5 @@
 var expect = require('chai').expect
-  , types = require('../../..')
+  , types = require('../..')
   , ArgumentTypeError = types.ArgumentTypeError
   , define = require('cli-define')
   , Option = define.Option;

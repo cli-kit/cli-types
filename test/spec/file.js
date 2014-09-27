@@ -1,5 +1,5 @@
 var expect = require('chai').expect
-  , types = require('../../..')
+  , types = require('../..')
   , ArgumentTypeError = types.ArgumentTypeError
   , define = require('cli-define')
   , Option = define.Option;
@@ -9,6 +9,8 @@ var files = {
   dir: __dirname,
   missing: 'this-file-really-does-not-want-to-be-found.txt'
 }
+
+var scope = require('../util/scope');
 
 describe('cli-types:', function() {
 
@@ -59,36 +61,24 @@ describe('cli-types:', function() {
     var res = converter(value, opt);
     expect(res).to.eql(value);
     done();
-
-    //var cli = require('../../..')(pkg, 'mock-file-type');
-    //var value = files.file;
-    //var args = ['-f', value, '-f=' + value];
-    //cli
-      //.option('-f, --file <file...>', 'a file argument', types.file('f'))
-    //cli.parse(args);
-    //expect(cli.file).to.eql([value, value]);
-    //done();
   });
 
-  //it('should throw argument type error (-f)', function(done) {
-    //var cli = require('../../..')(pkg, 'mock-file-type');
-    //var value = files.missing;
-    //var args = ['-f', value];
-    //cli
-      //.option('-f, --file <file>', 'a file argument', types.file('f'))
-      //.once('error', function(e) {
-        //expect(e.code).to.eql(this.errors.EFILE_TYPE_F.code);
-        //function fn() {
-          //throw e;
-        //}
-        //expect(fn).throws(Error);
-        //expect(fn).throws(/not a file/);
-        //done();
-      //})
-    //cli.parse(args);
-  //});
+  it('should throw argument type error (-f)', function(done) {
+    var value = files.missing;
+    var opt = new Option(
+      '-f, --file <file>', 'a file argument', types.file('f'));
+    var converter = opt.converter();
+
+    function fn() {
+      converter.call(scope, value, opt);
+    }
+    expect(fn).throws(ArgumentTypeError);
+    expect(fn).throws(/not a file/);
+    done();
+  });
+
   //it('should throw argument type error (-d)', function(done) {
-    //var cli = require('../../..')(pkg, 'mock-file-type');
+    //var cli = require('../..')(pkg, 'mock-file-type');
     //var value = files.missing;
     //var args = ['-f', value];
     //cli
@@ -105,7 +95,7 @@ describe('cli-types:', function() {
     //cli.parse(args);
   //});
   //it('should throw argument type error (-e)', function(done) {
-    //var cli = require('../../..')(pkg, 'mock-file-type');
+    //var cli = require('../..')(pkg, 'mock-file-type');
     //var value = files.missing;
     //var args = ['-f', value];
     //cli
@@ -122,7 +112,7 @@ describe('cli-types:', function() {
     //cli.parse(args);
   //});
   //it('should throw argument type error (-x)', function(done) {
-    //var cli = require('../../..')(pkg, 'mock-file-type');
+    //var cli = require('../..')(pkg, 'mock-file-type');
     //var value = files.missing;
     //var args = ['-f', value];
     //cli
@@ -139,7 +129,7 @@ describe('cli-types:', function() {
     //cli.parse(args);
   //});
   //it('should throw argument type error (-r)', function(done) {
-    //var cli = require('../../..')(pkg, 'mock-file-type');
+    //var cli = require('../..')(pkg, 'mock-file-type');
     //var value = files.missing;
     //var args = ['-f', value];
     //cli
@@ -156,7 +146,7 @@ describe('cli-types:', function() {
     //cli.parse(args);
   //});
   //it('should throw argument type error (-w)', function(done) {
-    //var cli = require('../../..')(pkg, 'mock-file-type');
+    //var cli = require('../..')(pkg, 'mock-file-type');
     //var value = files.missing;
     //var args = ['-f', value];
     //cli
@@ -173,7 +163,7 @@ describe('cli-types:', function() {
     //cli.parse(args);
   //});
   //it('should throw argument type error (-L)', function(done) {
-    //var cli = require('../../..')(pkg, 'mock-file-type');
+    //var cli = require('../..')(pkg, 'mock-file-type');
     //var value = files.missing;
     //var args = ['-f', value];
     //cli
@@ -190,7 +180,7 @@ describe('cli-types:', function() {
     //cli.parse(args);
   //});
   //it('should throw argument type error (-S)', function(done) {
-    //var cli = require('../../..')(pkg, 'mock-file-type');
+    //var cli = require('../..')(pkg, 'mock-file-type');
     //var value = files.missing;
     //var args = ['-f', value];
     //cli
@@ -207,7 +197,7 @@ describe('cli-types:', function() {
     //cli.parse(args);
   //});
   //it('should throw argument type error (-t)', function(done) {
-    //var cli = require('../../..')(pkg, 'mock-file-type');
+    //var cli = require('../..')(pkg, 'mock-file-type');
     //var value = files.missing;
     //var args = ['-f', value];
     //cli
@@ -224,7 +214,7 @@ describe('cli-types:', function() {
     //cli.parse(args);
   //});
   //it('should throw argument type error (-b)', function(done) {
-    //var cli = require('../../..')(pkg, 'mock-file-type');
+    //var cli = require('../..')(pkg, 'mock-file-type');
     //var value = files.missing;
     //var args = ['-f', value];
     //cli
@@ -241,7 +231,7 @@ describe('cli-types:', function() {
     //cli.parse(args);
   //});
   //it('should throw argument type error (-c)', function(done) {
-    //var cli = require('../../..')(pkg, 'mock-file-type');
+    //var cli = require('../..')(pkg, 'mock-file-type');
     //var value = files.missing;
     //var args = ['-f', value];
     //cli
@@ -258,7 +248,7 @@ describe('cli-types:', function() {
     //cli.parse(args);
   //});
   //it('should throw argument type error (-p)', function(done) {
-    //var cli = require('../../..')(pkg, 'mock-file-type');
+    //var cli = require('../..')(pkg, 'mock-file-type');
     //var value = files.missing;
     //var args = ['-f', value];
     //cli
@@ -275,7 +265,7 @@ describe('cli-types:', function() {
     //cli.parse(args);
   //});
   //it('should throw argument type error (-n)', function(done) {
-    //var cli = require('../../..')(pkg, 'mock-file-type');
+    //var cli = require('../..')(pkg, 'mock-file-type');
     //var args = ['-f='];
     //cli
       //.option('-f, --file [file]', 'a file argument', types.file('n'))
@@ -291,7 +281,7 @@ describe('cli-types:', function() {
     //cli.parse(args);
   //});
   //it('should throw argument type error (-z)', function(done) {
-    //var cli = require('../../..')(pkg, 'mock-file-type');
+    //var cli = require('../..')(pkg, 'mock-file-type');
     //var value = files.missing;
     //var args = ['-f', value];
     //cli
@@ -308,7 +298,7 @@ describe('cli-types:', function() {
     //cli.parse(args);
   //});
   //it('should throw argument type error (-s)', function(done) {
-    //var cli = require('../../..')(pkg, 'mock-file-type');
+    //var cli = require('../..')(pkg, 'mock-file-type');
     //var value = '/dev/null';
     //var args = ['-f', value];
     //cli

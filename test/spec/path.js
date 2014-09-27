@@ -1,7 +1,7 @@
 var expect = require('chai').expect
   , path = require('path')
   , fs = require('cli-fs')
-  , types = require('../../..')
+  , types = require('../..')
   , ArgumentTypeError = types.ArgumentTypeError
   , define = require('cli-define')
   , Option = define.Option;
