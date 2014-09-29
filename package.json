@@ -24,7 +24,7 @@
     "type"
   ],
   "dependencies": {
-    "cli-conflict": "^0.0.1",
+    "cli-conflict": "0.0.2",
     "cli-error": "^0.5.7",
     "cli-fs": "^1.0.3",
     "cli-native": "^1.0.0",
@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "chai": "^1.9.1",
-    "cli-define": "^0.5.43",
+    "cli-define": "^0.6.4",
     "istanbul": "^0.3.2",
     "mocha": "^1.21.4"
   },
