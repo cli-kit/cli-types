@@ -26,13 +26,13 @@
   "dependencies": {
     "cli-conflict": "0.0.2",
     "cli-error": "^0.5.7",
-    "cli-fs": "^1.0.3",
+    "cli-fs": "~1.0.4",
     "cli-native": "^1.0.0",
-    "cli-util": "^1.1.23"
+    "cli-util": "~1.1.26"
   },
   "devDependencies": {
-    "chai": "^1.9.1",
-    "cli-define": "^0.6.4",
+    "chai": "~1.9.2",
+    "cli-define": "~0.6.13",
     "istanbul": "^0.3.2",
     "mocha": "^1.21.4"
   },
