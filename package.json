@@ -24,7 +24,7 @@
     "type"
   ],
   "dependencies": {
-    "cli-conflict": "0.0.2",
+    "cli-conflict": "~0.1.0",
     "cli-error": "^0.5.7",
     "cli-fs": "~1.0.4",
     "cli-native": "^1.0.0",
